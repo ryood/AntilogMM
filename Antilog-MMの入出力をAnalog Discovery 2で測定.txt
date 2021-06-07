@@ -1,0 +1,47 @@
+Antilog-MMの入出力をAnalog Discovery 2で測定
+
+Antilog-MMはPNPとNPNを使ったアンチログ回路で、Mini Moogでも使われているタイプです。NPNトランジスタの差動ペアを使ったAntilog-NPNO https://dad8893.blogspot.com/search/label/AntiLog-NPNO と比較すると部品数が少なく済みます。
+
+外観
+IMG_20210531_180032 (1).jpg
+
+回路図
+IMG_20210602_0001.png
+
+EuroRack仕様で電源電圧は12Vです。
+
+シミュレーション回路図
+AngilogMM_sim.png
+
+変換の比率を決めるトリムの値(R3:R4)を.paramで変化させてDC解析します。
+
+DC解析 出力電圧
+AngilogMM_DC_Volt.png
+
+DC解析 出力電流(対数軸)
+
+縦軸は対数軸です。直線ならば指数変換されていることになります。若干上側に湾曲しています。
+
+テスト用配線
+AntilogMM_Test_ブレッドボード.png
+
+少しややこしいですが負荷抵抗RLにVCC→Outに向かって電流が流れます。RLに流れる電流によってOutが電圧降下します。
+
+入力信号は菊水MODEL459 https://dad8893.blogspot.com/2019/07/model-459.htmlから三角波を最大レベルで出力して利用しました。
+
+オシロはAnalog Discovery 2のScope機能です。
+
+入出力を観測
+AntilogMM.png
+
+観測データをCSVで出力しExcelでグラフ化しました。
+
+AntilogMM_Accu.png
+
+目印として黄色い点線で直線を引いています。実験でもやや上側に湾曲しています。
+
+Analog-NPNO https://dad8893.blogspot.com/2020/10/antilog-npnoanalog-discovery-2.htmlと比較すると指数変換の精度は劣りますが、VCFのカットオフ周波数を制御するために使うならこの程度でも十分かもしれません。
+
+IMG_20210602_213158.jpg
+
+TLF01と結合して音出ししてみましたが、ほんの少し違うか違わないかなという感じです。
